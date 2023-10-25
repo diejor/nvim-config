@@ -169,11 +169,6 @@ _G.packer_plugins = {
     path = "/home/diejor/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  ["refactoring.nvim"] = {
-    loaded = true,
-    path = "/home/diejor/.local/share/nvim/site/pack/packer/start/refactoring.nvim",
-    url = "https://github.com/theprimeagen/refactoring.nvim"
-  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/diejor/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -194,11 +189,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/diejor/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
-  },
-  ["zen-mode.nvim"] = {
-    loaded = true,
-    path = "/home/diejor/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",
-    url = "https://github.com/folke/zen-mode.nvim"
   }
 }
 

@@ -16,7 +16,6 @@ return require('packer').startup(function(use)
   use { 'mbbill/undotree' }
 
   use { 'theprimeagen/harpoon' }
-  use { "theprimeagen/refactoring.nvim" }
 
   use { 'tpope/vim-fugitive' }
   use {
@@ -52,7 +51,6 @@ return require('packer').startup(function(use)
           }
       end
   }
-  use { "folke/zen-mode.nvim" }
 
   use { "github/copilot.vim" }
   use { "zbirenbaum/copilot.lua" }
