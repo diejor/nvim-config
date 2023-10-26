@@ -104,11 +104,6 @@ _G.packer_plugins = {
     path = "/home/diejor/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  ["copilot.lua"] = {
-    loaded = true,
-    path = "/home/diejor/.local/share/nvim/site/pack/packer/start/copilot.lua",
-    url = "https://github.com/zbirenbaum/copilot.lua"
-  },
   ["copilot.vim"] = {
     loaded = true,
     path = "/home/diejor/.local/share/nvim/site/pack/packer/start/copilot.vim",
@@ -189,6 +184,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/diejor/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  vimtex = {
+    loaded = true,
+    path = "/home/diejor/.local/share/nvim/site/pack/packer/start/vimtex",
+    url = "https://github.com/lervag/vimtex"
   }
 }
 
