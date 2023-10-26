@@ -25,3 +25,6 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
+
+-- Open pdf files with zathura
+vim.cmd([[autocmd BufEnter *.pdf execute "!zathura '%'" | bdelete %]])
