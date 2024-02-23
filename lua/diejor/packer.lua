@@ -16,6 +16,7 @@ return require('packer').startup(function(use)
   use { 'mbbill/undotree' }
 
   use { 'theprimeagen/harpoon' }
+  use 'andweeb/presence.nvim'
 
   use { 'tpope/vim-fugitive' }
   use {
