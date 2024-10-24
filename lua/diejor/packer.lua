@@ -13,6 +13,7 @@ return require('packer').startup(function(use)
   }
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'ellisonleao/gruvbox.nvim' }
+  use({ 'rose-pine/neovim', as = 'rose-pine' })
   use { 'mbbill/undotree' }
 
   use { 'theprimeagen/harpoon' }
