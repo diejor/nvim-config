@@ -9,4 +9,5 @@ syntax enable
 
 " Viewer options: One may configure the viewer either by specifying a built-in
 " viewer method:
+let maplocalleader = ' '
 let g:vimtex_view_method = 'zathura'

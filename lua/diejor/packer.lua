@@ -15,33 +15,22 @@ return require('packer').startup(function(use)
   use { 'ellisonleao/gruvbox.nvim' }
   use({ 'rose-pine/neovim', as = 'rose-pine' })
   use { 'mbbill/undotree' }
+  use({
+    "aserowy/tmux.nvim",
+    config = function() return require("tmux").setup() end
+})
 
-  use { 'theprimeagen/harpoon' }
-  use 'andweeb/presence.nvim'
+  use {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+    'hrsh7th/nvim-cmp', -- Autocompletion plugin
+    'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
+    'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
+    'L3MON4D3/LuaSnip', -- Snippets plugin
+  }
 
   use { 'tpope/vim-fugitive' }
-  use {
-	  'VonHeikemen/lsp-zero.nvim',
-	  branch = 'v1.x',
-	  requires = {
-		  -- LSP Support
-		  {'neovim/nvim-lspconfig'},
-		  {'williamboman/mason.nvim'},
-		  {'williamboman/mason-lspconfig.nvim'},
-
-		  -- Autocompletion
-		  {'hrsh7th/nvim-cmp'},
-		  {'hrsh7th/cmp-buffer'},
-		  {'hrsh7th/cmp-path'},
-		  {'saadparwaiz1/cmp_luasnip'},
-		  {'hrsh7th/cmp-nvim-lsp'},
-		  {'hrsh7th/cmp-nvim-lua'},
-
-		  -- Snippets
-		  {'L3MON4D3/LuaSnip'},
-		  {'rafamadriz/friendly-snippets'},
-	  }
-  }
   use {
       "folke/trouble.nvim",
       config = function()
@@ -54,6 +43,10 @@ return require('packer').startup(function(use)
       end
   }
 
+  use { "mfussenegger/nvim-dap" }
+  use { "mfussenegger/nvim-jdtls" }
+  use { "theHamsta/nvim-dap-virtual-text" }
+  use { "rcarriga/nvim-dap-ui" }
   use { "github/copilot.vim" }
   use { "lervag/vimtex" }
 end)
