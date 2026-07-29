@@ -33,3 +33,6 @@ opt.updatetime = 50
 opt.isfname:append("@-@")
 
 opt.background = "dark"
+
+-- Builtin scheme that follows the terminal palette.
+vim.cmd.colorscheme("lunaperche")
