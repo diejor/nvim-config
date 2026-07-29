@@ -34,5 +34,10 @@ opt.isfname:append("@-@")
 
 opt.background = "dark"
 
+-- Off so Nvim uses the terminal's 16 ANSI colors instead of its own
+-- 24-bit palette. Neovim would otherwise auto-enable this on a truecolor
+-- terminal.
+opt.termguicolors = false
+
 -- Builtin scheme that follows the terminal palette.
 vim.cmd.colorscheme("lunaperche")
