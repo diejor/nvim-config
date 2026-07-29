@@ -5,7 +5,7 @@ local servers = { "lua_ls", "clangd", "ts_ls", "ltex" }
 return {
     {
         "mason-org/mason.nvim",
-        cmd = "Mason",
+        cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUpdate", "MasonLog" },
         opts = {},
         keys = {
             { "<leader>M", "<cmd>Mason<cr>", desc = "Mason" },
