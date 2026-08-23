@@ -12,6 +12,7 @@ return {
             { "<F10>",      function() require("dap").step_over() end,         desc = "Debug: step over" },
             { "<F11>",      function() require("dap").step_into() end,         desc = "Debug: step into" },
             { "<F12>",      function() require("dap").step_out() end,          desc = "Debug: step out" },
+            { "<leader>dC", function() require("dap").run_to_cursor() end,     desc = "Debug: run to cursor" },
             { "<leader>b",  function() require("dap").toggle_breakpoint() end, desc = "Debug: toggle breakpoint" },
             { "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input("Condition: ")) end, desc = "Debug: conditional breakpoint" },
             { "<leader>dr", function() require("dap").repl.toggle() end,       desc = "Debug: REPL" },
@@ -19,6 +20,18 @@ return {
             { "<leader>dt", function() require("dap").terminate() end,         desc = "Debug: terminate" },
             { "<leader>du", function() require("dapui").toggle() end,          desc = "Debug: toggle UI" },
             { "<leader>dh", function() require("dap.ui.widgets").hover() end,  desc = "Debug: hover", mode = { "n", "v" } },
+            { "<leader>dm", function() require("util.dap_memory").open() end,  desc = "Debug: hex-view memory", mode = { "n", "v" } },
+            { "<leader>dw", function() require("dapui").elements.watches.add() end, desc = "Debug: watch expression under cursor", mode = { "n", "v" } },
+            { "<leader>dW", function()
+                vim.ui.input({ prompt = "Watch expression: " }, function(expr)
+                    if expr and expr ~= "" then require("dapui").elements.watches.add(expr) end
+                end)
+            end, desc = "Debug: watch a typed expression" },
+            { "<leader>dM", function()
+                vim.ui.input({ prompt = "Memory at expression: " }, function(expr)
+                    if expr then require("util.dap_memory").open(expr) end
+                end)
+            end, desc = "Debug: hex-view memory at expression" },
         },
         config = function()
             local dap = require("dap")
@@ -63,6 +76,8 @@ return {
                 end)
             end
 
+            -- codelldb's default "simple" evaluator rejects casts, calls and
+            -- array slices; "native" hands expressions straight to LLDB.
             local codelldb_config = {
                 {
                     name = "Launch",
@@ -71,6 +86,34 @@ return {
                     program = pick_binary,
                     cwd = "${workspaceFolder}",
                     stopOnEntry = false,
+                    expressions = "native",
+                },
+                {
+                    name = "Launch (ASan/LSan)",
+                    type = "codelldb",
+                    request = "launch",
+                    program = pick_binary,
+                    cwd = "${workspaceFolder}",
+                    stopOnEntry = false,
+                    expressions = "native",
+                    -- Needs a binary built with -fsanitize=address. "console"
+                    -- routes the sanitizer report into dap-ui instead of a
+                    -- terminal buffer; faults still trap in the debugger.
+                    terminal = "console",
+                    env = {
+                        ASAN_OPTIONS = "detect_leaks=1:abort_on_error=0",
+                        UBSAN_OPTIONS = "print_stacktrace=1",
+                    },
+                },
+                {
+                    -- Wants /proc/sys/kernel/yama/ptrace_scope = 0 for
+                    -- processes this shell did not spawn.
+                    name = "Attach to process",
+                    type = "codelldb",
+                    request = "attach",
+                    pid = require("dap.utils").pick_process,
+                    cwd = "${workspaceFolder}",
+                    expressions = "native",
                 },
             }
 

@@ -9,6 +9,7 @@ return {
             { "<leader>ps", "<cmd>Telescope live_grep<cr>",  desc = "Grep project" },
             { "<leader>pb", "<cmd>Telescope buffers<cr>",    desc = "Find buffers" },
             { "<leader>ph", "<cmd>Telescope help_tags<cr>",  desc = "Find help" },
+            { "<leader>pk", "<cmd>Telescope keymaps<cr>",    desc = "Find keymaps" },
         },
         opts = {},
     },
